@@ -1,3 +1,6 @@
+@auth
+    
+
 <x-splade-data store="mobileNavigation" default="{ open: false }" />
 
 <x-splade-rehydrate on="refresh-navigation-menu, profile-information-updated">
@@ -252,3 +255,4 @@
         </div>
     </nav>
 </x-splade-rehydrate>
+@endauth
