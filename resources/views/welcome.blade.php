@@ -10,7 +10,7 @@
         <div class="mt-8 text-2xl">
             Welcome to your Splade application!
         </div>
-        <Link slideover href="/docs">Home</Link>
+       
        
         
     </x-panel>

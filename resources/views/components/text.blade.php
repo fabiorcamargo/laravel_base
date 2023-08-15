@@ -1,0 +1,1 @@
+<div  {!! $attributes->merge(['class' => 'text-4xl py-4 tracking-tight text-gray-900 sm:text-4xl']) !!}>{{$text}}</div>

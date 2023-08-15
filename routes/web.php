@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\CodePremiumController;
+use App\Http\Controllers\ResumeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +37,9 @@ Route::middleware(['splade'])->group(function () {
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
         ]);
-    });
+    })->name('home');
+
+
 
     Route::middleware([
         'auth:sanctum',
@@ -42,5 +47,25 @@ Route::middleware(['splade'])->group(function () {
         'verified',
     ])->group(function () {
         Route::view('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/resume/create', [ResumeController::class, 'create'])->name('resume.create');
+        Route::post('/resume/store', [ResumeController::class, 'store'])->name('resume.store');
+        Route::get('/resume/{resume}', [ResumeController::class, 'show'])->name('resume.show');
+        
+        Route::post('/resume/{resume}', [ResumeController::class, 'update'])->name('resume.update');
+        Route::get('/resume/{resume}/edit', [ResumeController::class, 'edit'])->name('resume.edit');
+        
+        Route::get('/code', function(){
+            return view('user.code');
+        })->name('resume.edit');
+        
+        
+        
+        
+
     });
+
+    Route::get('/premium', function(){
+        return view('auth.premium');
+    })->name('premium');
+    Route::post('/code/verify',[CodePremiumController::class, 'verify'])->name('resume.edit');
 });

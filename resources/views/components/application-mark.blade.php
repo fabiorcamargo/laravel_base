@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 27.5.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.0" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.0" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      viewBox="0 0 130 129" enable-background="new 0 0 130 129" xml:space="preserve" {{ $attributes }}>
 <g>
     <path fill="#E63960" d="M98.1,120c-1.3-1.8-2.6-3.6-3.8-5.3c-1.6,0.9-3.2,1.7-4.7,2.6c-0.2,0.1-0.3,0.8-0.2,1.1
