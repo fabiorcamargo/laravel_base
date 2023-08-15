@@ -2,12 +2,13 @@
 
 <x-authentication-card>
     <x-slot:logo>
-        <x-authentication-card-logo />
+        <x-application-logo />
     </x-slot>
 
     <x-splade-form class="space-y-4">
-        <x-splade-input id="name" name="name" :label="__('Name')" required autofocus />
-        <x-splade-input id="email" name="email" type="email" :label="__('Email')" required />
+        <x-splade-input id="name" name="name" :label="__('Name')" placeholder='Ex: Maria Eduarda Gonçalves' required autofocus />
+        <x-splade-input id="phone" name="phone" placeholder='11987654321' prepend='+55' maxlength='11' :label="__('Telefone (DDD + Número)')" required autofocus />
+        <x-splade-input id="email" name="email" placeholder='exemplo@exemplo.com' type="email" :label="__('Email')" required />
         <x-splade-input id="password" name="password" type="password" :label="__('Password')" required autocomplete="new-password" />
         <x-splade-input id="password_confirmation" name="password_confirmation" type="password" :label="__('Confirm Password')" required autocomplete="new-password" />
 

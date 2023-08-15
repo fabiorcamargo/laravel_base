@@ -1,5 +1,12 @@
-<svg version="1.0" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-     viewBox="0 0 130 129" enable-background="new 0 0 130 129" xml:space="preserve" {{ $attributes }}>
+<Link :href="'/'">
+    <svg
+    class="w-full"
+    viewBox="0 0 130 129"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    
+    {{ $attributes }}
+>
 <g>
     <path fill="#E63960" d="M98.1,120c-1.3-1.8-2.6-3.6-3.8-5.3c-1.6,0.9-3.2,1.7-4.7,2.6c-0.2,0.1-0.3,0.8-0.2,1.1
         c0.4,1.4,0.9,2.7,1.4,4.1c0.4,0.9,0.2,1.3-0.7,1.6c-3.4,1.1-6.9,2.2-10.3,3.4c-0.8,0.3-1-0.1-1.2-0.7c-0.5-1.5-0.9-3.1-1.5-4.6
@@ -56,3 +63,4 @@
         c0.1-2.8,2.3-5,5.2-5.7C108.6,48.8,112,53.1,111.8,57.4z"/>
 </g>
 </svg>
+</Link>

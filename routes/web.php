@@ -3,7 +3,9 @@
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CodePremiumController;
 use App\Http\Controllers\ResumeController;
+use App\Mail\welcome_mail;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,6 +64,11 @@ Route::middleware(['splade'])->group(function () {
         
         
 
+    });
+
+    Route::get('/mail', function(){
+        $user = auth()->user();
+        Mail::to($user->email)->send(new welcome_mail($user));
     });
 
     Route::get('/premium', function(){

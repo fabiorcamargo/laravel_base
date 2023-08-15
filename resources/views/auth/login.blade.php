@@ -2,7 +2,7 @@
 
 <x-authentication-card>
     <x-slot:logo>
-        <x-authentication-card-logo />
+        <x-application-logo />
     </x-slot>
 
     @if($status = session('status'))

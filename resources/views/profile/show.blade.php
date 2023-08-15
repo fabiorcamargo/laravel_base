@@ -22,13 +22,13 @@
             <x-section-border />
         @endif
 
-        @if(Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+        {{--@if(Laravel\Fortify\Features::canManageTwoFactorAuthentication())
             <div class="mt-10 sm:mt-0" dusk="two-factor-authentication-form">
                 @include('profile.two-factor-authentication-form')
             </div>
 
             <x-section-border />
-        @endif
+        @endif--}}
 
         <div class="mt-10 sm:mt-0" dusk="logout-other-browser-sessions-form">
             @include('profile.logout-other-browser-sessions-form')

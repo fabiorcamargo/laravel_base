@@ -21,10 +21,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             //PageTypeSeeder::class,
-            //StatesSeed::class,
-            //CitiesSeed::class
+            StatesSeed::class,
+            CitiesSeed::class
             //UserSeeder::class
-            UserResumeSeeder::class
+            //UserResumeSeeder::class
         ]);
     }
 }

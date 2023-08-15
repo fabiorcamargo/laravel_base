@@ -19,10 +19,19 @@ class CodePremiumController extends Controller
 
     public function verify(Request $request){
         //dd($request->all());
-        $code = ($request->code);
-        CodePremium::where('code', $code)->first();
-        Toast::title('Currículo criado com sucesso!');
-        return back();
+        //$code = ($request->code);
+        $code = (implode("",$request->code));
+        if(CodePremium::where('code', $code)->first()){
+            Toast::title('Seu código é válido!')
+            ->autoDismiss(5);
+            return back();
+        }else{
+            Toast::warning('Código não encontado, por favor verifique o código e insira novamente')
+            ->autoDismiss(5);
+            return back();
+        }
+        
+        
 
     }
 
