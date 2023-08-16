@@ -22,8 +22,9 @@ return new class extends Migration
             $table->string('email');
             $table->string('uf');
             $table->string('cidade');
+            $table->string('photo');
             $table->string('cursos_complementares')->nullable();
-            $table->string('formacao')->nullable();
+            $table->string('experiencia')->nullable();
             $table->timestamps();
         });
     }

@@ -8,14 +8,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class States extends Model
 {
-    use HasFactory;
-    protected $fillable = [
-        'id',
-        'name',
-        'abbr',
-        ];
-        public function cities(): HasMany
+    public $timestamps = false;
+
+    public function cities()
     {
         return $this->hasMany(City::class);
     }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
+    }
+
 }

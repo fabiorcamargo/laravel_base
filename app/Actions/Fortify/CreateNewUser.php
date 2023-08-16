@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Mail\welcome_mail;
+use App\Models\CodePremium;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,9 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
 
+        
+        $this->code = CodePremium::find($input['code']);
+        
 
         return DB::transaction(function () use ($input) {
             return tap(User::create([
@@ -40,6 +44,10 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
+                
+                $this->code->active = $user->id;
+                $this->code->save();
+
                 Mail::to($user->email)->send(new welcome_mail($user));
                 $user->sendEmailVerificationNotification();
                 $this->createTeam($user);

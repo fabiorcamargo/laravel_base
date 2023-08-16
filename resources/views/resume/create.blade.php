@@ -46,7 +46,7 @@
                                     var city = "1";                
                                     $('select[name="cidade"]').empty();
                                     $.each(data, function(key, value) {
-                                    $('select[name="cidade"]').append('<option value="'+ value['id'] +'">'+ value['name'] +'</option>');
+                                    $('select[name="cidade"]').append('<option value="'+ value['id'] +'">'+ value['title'] +'</option>');
                                     console.log(value);     
                                 });
                                     

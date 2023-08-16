@@ -110,6 +110,7 @@ class ResumeController extends Controller
     public function update(Request $request, UserResume $resume)
     {
 
+        dd($request->all());
         $data = $request->validate([
             'nome' => ['required', 'string', 'max:100']
         ]);
@@ -124,14 +125,21 @@ class ResumeController extends Controller
     public function store(Request $request)
     {
 
-        //dd($request->all());
+        
         $data = $request->validate(ResumeController::rules());
 
         HandleSpladeFileUploads::forRequest($request, 'photo');
         $path = $request->file('photo')->store('avatar/' . auth()->user()->id);
 
+        $data = $request->all();
         $data['telefone'] = "55$request->telefone";
         $data['nascimento'] = Carbon::parse($data['nascimento']);
+        $data['photo'] = $path;
+        $request->replace($data);
+        //dd($data);
+        //dd($request->all());
+
+        
 
         //dd($data);
 
@@ -146,7 +154,7 @@ class ResumeController extends Controller
 
     public function create(Request $request)
     {
-        $states = States::orderBy('name')->select('name', 'id')->get();
+        $states = States::orderBy('title')->select('title', 'id')->get();
         //  dd(($states->toArray())[0]['name']);
         $soft = [
             "Comunicação" => "Comunicação",
@@ -179,7 +187,7 @@ class ResumeController extends Controller
                 Date::make('nascimento')->label('Data de Nascimento'),
                 Number::make('telefone')->label('Celular (insira o DDD e o número)')->prepend('+55'),
                 Email::make('email')->required()->label('Email'),
-                Select::make('uf')->label('Estado')->options($states->toArray())->optionLabel('name')->optionValue('id')->remoteRoot('data.uf')->id('uf')->placeholder('Selecione um Estado')->choices(false),
+                Select::make('uf')->label('Estado')->options($states->toArray())->optionLabel('title')->optionValue('id')->remoteRoot('data.uf')->id('uf')->placeholder('Selecione um Estado')->choices(false),
                 Select::make('cidade')->label('Cidade')->id('city')->choices(false),
                 Select::make('skills')->label('Soft Skills (Escolha apenas 3)')->options($soft)->multiple()->choices(['searchEnabled' => false, 'max' => 3])->help('As habilidades interpessoais, também conhecidas como soft skills, são competências pessoais e sociais que são igualmente importantes, senão mais, do que as habilidades técnicas em muitos contextos. Escolha três Soft Skills que você mais se identifica para traçarmos o seu perfil:'),
                 Textarea::make('objetivo')->label('Objetivo')->id('objetivo')->autosize()->help('Se precisar de ajuda com esse campo, clique no botão Objetivo abaixo para ver sugestões de como preencher esse campo, não esqueça de trocar as informações destacadas.'),

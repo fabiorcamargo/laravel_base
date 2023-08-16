@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class City extends Model
+class Region extends Model
 {
-    use HasFactory;
     public $timestamps = false;
 
-    public function state()
+    public function states()
     {
-        return $this->belongsTo(State::class);
+        return $this->hasMany(State::class);
     }
+
 }

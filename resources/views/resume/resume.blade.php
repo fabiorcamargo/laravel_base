@@ -1152,8 +1152,8 @@ padding-right: 20px 15px;
   <div class="d-flex flex-column">
 
     <div class="profile">
-      <img src="{{asset(Storage::url(Auth::user()->profile_photo_path))}}" alt="" class="img-fluid rounded-circle">
-      <h1 class="text-light"><a href="index.html">{{Auth::user()->name}}</a></h1>
+      <img src="{{asset($resume->photo)}}" alt="" class="img-fluid rounded-circle">
+      <h1 class="text-light"><a href="index.html">{{$resume->name}}</a></h1>
       <div class="social-links mt-3 text-center">
         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -1199,7 +1199,7 @@ padding-right: 20px 15px;
 
       <div class="row">
         <div class="col-lg-4" data-aos="fade-right">
-          <img src="{{asset(Storage::url(Auth::user()->profile_photo_path))}}" class="img-fluid" alt="">
+          <img src="{{asset($resume->photo)}}" class="img-fluid" alt="">
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
           <h3>
@@ -1212,8 +1212,8 @@ padding-right: 20px 15px;
                 <li><i class="bi bi-chevron-right"></i> <strong>Nome:</strong> <span>{{$resume->nome}}</span></li>
                 <li><i class="bi bi-chevron-right"></i> <strong>Data de Nascimento:</strong> <span>{{\Carbon\Carbon::parse($resume->nascimento)->format('d/m/Y')}}</span></li>
                 {{--<li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>--}}
-                <li><i class="bi bi-chevron-right"></i> <strong>Telefone:</strong> <span>{{ $resume->telefone }}</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>Cidade:</strong> <span>{{ App\Models\City::find($resume->cidade)->name }} - {{ App\Models\States::find($resume->uf)->abbr }} </span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Telefone:</strong> <span>+{{substr($resume->telefone, 0, 2)}} ({{substr($resume->telefone, 2, 2)}}) {{strlen($resume->telefone) <= 12 ? substr($resume->telefone, 4, 4) : substr($resume->telefone, 4, 5) }} - {{substr($resume->telefone, -4)}} </span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Cidade:</strong> <span>{{ App\Models\City::find($resume->cidade)->title }} - {{ App\Models\States::find($resume->uf)->letter }} </span></li>
               </ul>
             </div>
             <div class="col-lg-6">
@@ -1263,9 +1263,21 @@ padding-right: 20px 15px;
     <div class="container">
 
       <div class="section-title">
-        <h2>Resume</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <h2>Experiência Profissional</h2>
+        
       </div>
+
+      <Link href="#refund-info">
+        Show Refund Information
+      </Link>
+
+      <x-splade-modal name="refund-info">
+        <x-splade-form action="{{route('resume.update', ['resume' => $resume])}}">
+          <input v-model="form.name" type="text" />
+          <input v-model="form.email" type="email" />
+          <button type="submit">Send</button>
+        </x-splade-form>
+      </x-splade-modal>
 
       <div class="row">
         <div class="col-lg-6" data-aos="fade-up">

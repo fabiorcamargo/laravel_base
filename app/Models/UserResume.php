@@ -18,6 +18,7 @@ class UserResume extends Model
         'email',
         'uf',
         'cidade',
+        'photo',
         'cursos_complementares',
         'formacao'
     ];
@@ -29,6 +30,6 @@ class UserResume extends Model
 
     public function cities()
     {
-        return UserResume::select('name')->get();
+        return UserResume::select('title')->get();
     }
 }

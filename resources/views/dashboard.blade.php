@@ -8,7 +8,7 @@
     </x-slot>
    
    <x-panel>
-                <x-welcome />
+                
                 
     </x-panel>
 </x-layout>

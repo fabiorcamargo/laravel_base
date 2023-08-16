@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->string('seller');
-            $table->timestamp('validity');
+            $table->timestamp('validity')->nullable();
+            $table->string('token');
+            $table->string('active')->nullable();
             $table->timestamps();
         });
     }

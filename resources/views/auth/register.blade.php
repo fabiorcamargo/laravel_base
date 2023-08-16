@@ -1,3 +1,7 @@
+@isset (request()->token)
+    @if(App\Models\CodePremium::where('token', request()->token)->first())
+        
+
 @seoTitle(__('Register'))
 
 <x-authentication-card>
@@ -6,6 +10,13 @@
     </x-slot>
 
     <x-splade-form class="space-y-4">
+        <x-text-title :value="__('Cadastro Premium')" />
+        <x-text-subtitle :value="__('Preencha os dados abaixo para concluir o seu registro!')" class="pb-4" />
+        
+        <x-splade-data default="{ name: '{{ request()->input('code') }}' }">
+            <input v-model="data.name" hidden/>
+        </x-splade-data>
+
         <x-splade-input id="name" name="name" :label="__('Name')" placeholder='Ex: Maria Eduarda Gonçalves' required autofocus />
         <x-splade-input id="phone" name="phone" placeholder='11987654321' prepend='+55' maxlength='11' :label="__('Telefone (DDD + Número)')" required autofocus />
         <x-splade-input id="email" name="email" placeholder='exemplo@exemplo.com' type="email" :label="__('Email')" required />
@@ -30,3 +41,17 @@
         </div>
     </x-splade-form>
 </x-authentication-card>
+@else
+    @php
+        header("Location: " . URL::to('/'), true, 302);
+        exit();
+    @endphp
+@endif
+
+@else
+    @php
+        header("Location: " . URL::to('/'), true, 302);
+        exit();
+    @endphp
+@endisset
+

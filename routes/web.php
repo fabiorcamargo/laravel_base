@@ -51,20 +51,20 @@ Route::middleware(['splade'])->group(function () {
         Route::view('/dashboard', 'dashboard')->name('dashboard');
         Route::get('/resume/create', [ResumeController::class, 'create'])->name('resume.create');
         Route::post('/resume/store', [ResumeController::class, 'store'])->name('resume.store');
-        Route::get('/resume/{resume}', [ResumeController::class, 'show'])->name('resume.show');
+        
         
         Route::post('/resume/{resume}', [ResumeController::class, 'update'])->name('resume.update');
         Route::get('/resume/{resume}/edit', [ResumeController::class, 'edit'])->name('resume.edit');
         
+        Route::get('/code/create', [CodePremiumController::class, 'create'])->name('code.create');
+        Route::post('/code/store', [CodePremiumController::class, 'store'])->name('code.store');
         Route::get('/code', function(){
             return view('user.code');
         })->name('resume.edit');
         
-        
-        
-        
-
     });
+
+    Route::get('/resume/{resume}', [ResumeController::class, 'show'])->name('resume.show');
 
     Route::get('/mail', function(){
         $user = auth()->user();

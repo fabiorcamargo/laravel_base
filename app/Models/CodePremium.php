@@ -11,6 +11,8 @@ class CodePremium extends Model
     protected $fillable = [
         'code',
         'seller',
+        'token',
+        'active',
         'validity'
     ];
 }
