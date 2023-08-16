@@ -85,7 +85,7 @@ class CodePremiumController extends Controller
             ->class('space-y-4')
             ->fields([
 
-                Input::make('seller')->required()->label('Name Completo'),
+                Input::make('seller')->required()->label('Divulgador'),
                 Textarea::make('token')->label('Código')->id('token')->autosize(),
                 Submit::make()->label('Create'),
             ]);
